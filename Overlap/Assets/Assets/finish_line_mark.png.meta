@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      finish_line_mark_0: 3631290197440542806
+      finish_line_mark_1: 7566486281464811482
+      finish_line_mark_2: -1960065055844792335
+      finish_line_mark_3: -8932435254575968163
+      finish_line_mark_4: 5891737202592665927
+      finish_line_mark_5: 3771387556741046198
+      finish_line_mark_6: -7506719363902196318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
