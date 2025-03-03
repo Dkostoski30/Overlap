@@ -21,7 +21,7 @@ public class WheelTrailRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(controller.isTyreScreetching(out float lateralVelocity, out bool isBraking)){
+        if(controller.isTyreScreeching(out float lateralVelocity, out bool isBraking)){
             trailRenderer.emitting = true;
         }else{
             trailRenderer.emitting = false;

@@ -24,7 +24,7 @@ public class WheelPartiicleHandler : MonoBehaviour
         particleEmissionRate = Mathf.Lerp(particleEmissionRate, 0, Time.deltaTime * 5);
         particleSystemEmissionModule.rateOverTime = particleEmissionRate;
 
-        if(controller.isTyreScreetching(out float lateralVelocity, out bool isBraking)){
+        if(controller.isTyreScreeching(out float lateralVelocity, out bool isBraking)){
             if (isBraking){
                 particleEmissionRate = 30;
             }else{

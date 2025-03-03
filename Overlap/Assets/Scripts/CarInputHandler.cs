@@ -8,19 +8,15 @@ public class CarInput : MonoBehaviour
     {
         controller = GetComponent<CarController>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector2 inputVector = Vector2.zero;
-        inputVector.x = Input.GetAxis("Horizontal");
-        inputVector.y = Input.GetAxis("Vertical");
-
+        // Gather steering and acceleration inputs.
+        Vector2 inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         controller.SetInputVector(inputVector);
+
+        // Check if the handbrake key (space bar) is pressed.
+        bool handbrake = Input.GetKey(KeyCode.Space);
+        controller.SetHandbrake(handbrake);
     }
 }
