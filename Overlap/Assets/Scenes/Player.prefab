@@ -10024,7 +10024,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3903637021440330253}
   - component: {fileID: 1309815305142312156}
-  - component: {fileID: 4762463016846443276}
   - component: {fileID: 7959419908803489106}
   - component: {fileID: 385198905468168921}
   m_Layer: 0
@@ -10077,26 +10076,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4762463016846443276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5558157357540894650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23195f714dc711d4086f9eff8e9311fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  driftFactor: 0.3
-  accelerationFactor: 30
-  turnFactor: 3.5
-  maxSpeed: 10
-  accelerationSmoothing: 5
-  steeringSmoothing: 1.5
-  driftSmoothing: 5
-  handbrakeDeceleration: 0.9
 --- !u!114 &7959419908803489106
 MonoBehaviour:
   m_ObjectHideFlags: 0

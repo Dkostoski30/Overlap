@@ -1,22 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CarInput : MonoBehaviour
+public class CarInputHandler : MonoBehaviour
 {
-    CarController controller;
+    TopDownCarController topDownCarController;
 
     void Awake()
     {
-        controller = GetComponent<CarController>();
+        topDownCarController = GetComponent<TopDownCarController>();
+    }
+
+    void Start()
+    {
+
     }
 
     void Update()
     {
-        // Gather steering and acceleration inputs.
-        Vector2 inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        controller.SetInputVector(inputVector);
+        Vector2 inputVector = Vector2.zero;
 
-        // Check if the handbrake key (space bar) is pressed.
-        bool handbrake = Input.GetKey(KeyCode.Space);
-        controller.SetHandbrake(handbrake);
+        inputVector.x = Input.GetAxis("Horizontal");
+        inputVector.y = Input.GetAxis("Vertical");
+
+        topDownCarController.SetInputVector(inputVector);
     }
 }
