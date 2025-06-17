@@ -5,14 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - Barrier
+  - CheckPoint
+  - Track
+  - YellowObstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Track
   - Water
   - UI
-  - 
+  - Groundd
   - 
   - 
   - 
@@ -47,6 +50,9 @@ TagManager:
     locked: 0
   - name: Trees
     uniqueID: 1101272863
+    locked: 0
+  - name: Ground
+    uniqueID: 1406594657
     locked: 0
   m_RenderingLayers:
   - Default
