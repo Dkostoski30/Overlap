@@ -10205,6 +10205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3903637021440330253}
   - component: {fileID: 1309815305142312156}
+  - component: {fileID: 4676638715827263974}
   - component: {fileID: 7959419908803489106}
   - component: {fileID: 385198905468168921}
   - component: {fileID: 7220872511139074841}
@@ -10223,7 +10224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5558157357540894650}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000002648197, y: 0.0000002648132, z: 0.70710605, w: -0.7071075}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -1.54, y: -1.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10258,6 +10259,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4676638715827263974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558157357540894650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23195f714dc711d4086f9eff8e9311fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driftFactor: 0.95
+  accelerationFactor: 30
+  turnFactor: 3.5
+  maxSpeed: 20
 --- !u!114 &7959419908803489106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10270,6 +10287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e059ddc185b8d6e498fb377f0cbe8001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 2
 --- !u!61 &385198905468168921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10328,7 +10346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c6081b5089ee64f9c36c46606b87ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carPositionText: {fileID: 0}
+  carPositionText: {fileID: 3826332541445131983}
 --- !u!1 &6497259975606672492
 GameObject:
   m_ObjectHideFlags: 0
@@ -10339,7 +10357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6556446340989734609}
   - component: {fileID: 3062900141979563827}
-  - component: {fileID: 700935998583149881}
   m_Layer: 0
   m_Name: F1_car_set_0
   m_TagString: Untagged
@@ -10422,16 +10439,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &700935998583149881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497259975606672492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c6081b5089ee64f9c36c46606b87ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carPositionText: {fileID: 0}
