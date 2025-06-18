@@ -5,9 +5,10 @@ using System.Linq;
 
 public class PositionHandler : MonoBehaviour
 {
-    public List<CarLapCounter> carLapCounters = new List<CarLapCounter>();
+    LeaderboardUIHandler leaderboardUIHandler;
 
-    void Start()
+    public List<CarLapCounter> carLapCounters = new List<CarLapCounter>();
+    private void Awake()
     {
         CarLapCounter[] carLapCounterArray = FindObjectsOfType<CarLapCounter>();
 
@@ -15,8 +16,14 @@ public class PositionHandler : MonoBehaviour
 
         foreach (CarLapCounter lapCounters in carLapCounters)
             lapCounters.OnPassCheckpoint += OnPassCheckpoint;
+
+        leaderboardUIHandler = FindObjectOfType<LeaderboardUIHandler>();
     }
 
+    void Start()
+    {
+        leaderboardUIHandler.UpdateList(carLapCounters);
+    }
 
     void OnPassCheckpoint(CarLapCounter carLapCounter)
     {
@@ -26,6 +33,6 @@ public class PositionHandler : MonoBehaviour
 
         carLapCounter.SetCarPosition(carPosition);
 
+        leaderboardUIHandler.UpdateList(carLapCounters);
     }
-
 }
