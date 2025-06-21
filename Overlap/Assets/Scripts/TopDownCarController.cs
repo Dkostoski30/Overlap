@@ -5,11 +5,11 @@ using UnityEngine;
 public class TopDownCarController : MonoBehaviour
 {
     [Header("Car settings")]
-    public float driftFactor = 0.95f;
-    public float accelerationFactor = 30.0f;
-    public float turnFactor = 3.5f;
+    public float driftFactor = 0.65f;
+    public float accelerationFactor = 9.0f;
+    public float turnFactor = 4f;
     public float maxSpeed = 20;
-
+    public float frictionConstant = 0.45f; 
     float accelerationInput = 0;
     float steeringInput = 0;
 
@@ -60,9 +60,13 @@ public class TopDownCarController : MonoBehaviour
         float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.linearVelocity.magnitude / 2);
         minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
+        
         rotationAngle -= steeringInput * turnFactor * minSpeedBeforeAllowTurningFactor;
-
         carRigidbody2D.MoveRotation(rotationAngle);
+
+      
+        float turningSlowdownFactor = Mathf.Abs(steeringInput) * frictionConstant; 
+        carRigidbody2D.linearVelocity *= (1 - turningSlowdownFactor * Time.fixedDeltaTime);
     }
 
     void KillOrthogonalVelocity()
