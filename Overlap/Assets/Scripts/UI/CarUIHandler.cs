@@ -1,13 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarUIHandler : MonoBehaviour
 {
     Animator animator = null;
+    [Header("Car Details")]
+    public Image carImage;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
     }
+
+    public void SetupCar(CarData carData)
+    {
+        carImage.sprite = carData.CarUISprite;
+    }
+
     public void StartCarEntranceAnimation(bool isAppearingOnRightSide)
     {
         if (isAppearingOnRightSide)

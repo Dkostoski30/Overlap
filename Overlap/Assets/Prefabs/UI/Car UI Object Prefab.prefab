@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02225cea82486c3458cad4294462f711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carImage: {fileID: 834608514521517776}
 --- !u!1 &6926282757734753432
 GameObject:
   m_ObjectHideFlags: 0
