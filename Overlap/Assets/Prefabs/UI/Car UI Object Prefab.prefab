@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3895998341880488896}
   - component: {fileID: 7660042255916099775}
   - component: {fileID: 5925984835697704676}
+  - component: {fileID: -7375359473629265144}
   m_Layer: 5
   m_Name: Car UI Object Prefab
   m_TagString: Untagged
@@ -68,6 +69,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7375359473629265144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305797378370905491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02225cea82486c3458cad4294462f711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6926282757734753432
 GameObject:
   m_ObjectHideFlags: 0
