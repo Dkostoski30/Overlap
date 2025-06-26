@@ -9,7 +9,17 @@ public class LeaderboardUIHandler : MonoBehaviour
 
     SetLeaderboardItemInfo[] setLeaderboardItemInfo;
 
+    bool isInitilized = false;
+
+    Canvas canvas;
+
     void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+        canvas.enabled = true; 
+    }
+
+    void Start()
     {
         VerticalLayoutGroup leaderboardLayoutGroup = GetComponentInChildren<VerticalLayoutGroup>();
 
@@ -27,17 +37,16 @@ public class LeaderboardUIHandler : MonoBehaviour
         }
 
         Canvas.ForceUpdateCanvases();
-    }
 
-
-    void Start()
-    {
-        
+        isInitilized = true;
     }
 
     public void UpdateList(List<CarLapCounter> lapCounters)
     {
-        for (int i = 0; i < lapCounters.Count; i++)
+        if (!isInitilized)
+            return;
+
+        for (int i = 0; i < lapCounters.Count && i < setLeaderboardItemInfo.Length; i++)
         {
             setLeaderboardItemInfo[i].SetDriverNameText(lapCounters[i].gameObject.name);
         }

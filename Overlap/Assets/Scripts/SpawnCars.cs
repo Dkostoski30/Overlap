@@ -7,26 +7,25 @@ public class SpawnCars : MonoBehaviour
     void Start()
     {
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-
         CarData[] carDatas = Resources.LoadAll<CarData>("CarData/");
 
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             Transform spawnPoint = spawnPoints[i].transform;
-
-            int playerSelectedCarID = PlayerPrefs.GetInt($"P{i + 1}SelectedCarID");
+            int playerNumber = i + 1;
+            int playerSelectedCarID = PlayerPrefs.GetInt($"P{playerNumber}SelectedCarID");
 
             foreach (CarData cardata in carDatas)
             {
                 if (cardata.CarUniqueID == playerSelectedCarID)
                 {
                     GameObject car = Instantiate(cardata.CarPrefab, spawnPoint.position, spawnPoint.rotation);
+                    bool isAI = PlayerPrefs.GetInt($"P{playerNumber}_IsAI") == 1;
 
-                    int playerNumber = i + 1;
+                    car.name = isAI ? $"AI {playerNumber}" : $"Player {playerNumber}";
+                    car.GetComponent<CarInputHandler>().playerNumber = playerNumber;
 
-                    car.GetComponent<CarInputHandler>().playerNumber = i + 1;
-
-                    if (PlayerPrefs.GetInt($"P{playerNumber}_IsAI") == 1)
+                    if (isAI)
                     {
                         car.GetComponent<CarInputHandler>().enabled = false;
                         car.tag = "AI";
@@ -43,5 +42,4 @@ public class SpawnCars : MonoBehaviour
             }
         }
     }
-
 }
