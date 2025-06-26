@@ -9,6 +9,7 @@ TagManager:
   - Track
   - YellowObstacle
   - SpawnPoint
+  - AI
   layers:
   - Default
   - TransparentFX

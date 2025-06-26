@@ -1,30 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnCars : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject[] SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
         CarData[] carDatas = Resources.LoadAll<CarData>("CarData/");
 
-        for (int i = 0; i < SpawnPoints.Length; i++)
+        for (int i = 0; i < spawnPoints.Length; i++)
         {
-            Transform spawnPoint = SpawnPoints[i].transform;
+            Transform spawnPoint = spawnPoints[i].transform;
 
-            int playerID = PlayerPrefs.GetInt($"P{i + 1}SelectedCarID");
-            foreach (CarData carData in carDatas)
+            int playerSelectedCarID = PlayerPrefs.GetInt($"P{i + 1}SelectedCarID");
+
+            foreach (CarData cardata in carDatas)
             {
-                if (carData.CarUniqueID == playerID)
+                if (cardata.CarUniqueID == playerSelectedCarID)
                 {
-                    GameObject car = Instantiate(carData.CarPrefab, spawnPoint.position, spawnPoint.rotation);
+                    GameObject car = Instantiate(cardata.CarPrefab, spawnPoint.position, spawnPoint.rotation);
+
+                    int playerNumber = i + 1;
+
                     car.GetComponent<CarInputHandler>().playerNumber = i + 1;
+
+                    if (PlayerPrefs.GetInt($"P{playerNumber}_IsAI") == 1)
+                    {
+                        car.GetComponent<CarInputHandler>().enabled = false;
+                        car.tag = "AI";
+                    }
+                    else
+                    {
+                        car.GetComponent<CarAIHandler>().enabled = false;
+                        car.GetComponent<AStarLite>().enabled = false;
+                        car.tag = "Player";
+                    }
+
                     break;
                 }
             }
-                
         }
-        
     }
 
 }

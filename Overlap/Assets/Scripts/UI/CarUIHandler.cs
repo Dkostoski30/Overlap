@@ -39,12 +39,10 @@ public class CarUIHandler : MonoBehaviour
             animator.Play("Car UI Disappear To Left");
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
     }
-    //Event
     public void OnCarExitAnimationCompleted()
     {
         Destroy(gameObject);

@@ -10209,6 +10209,8 @@ GameObject:
   - component: {fileID: 7959419908803489106}
   - component: {fileID: 385198905468168921}
   - component: {fileID: 7220872511139074841}
+  - component: {fileID: 6989987307149779290}
+  - component: {fileID: 1571375353614577629}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10275,6 +10277,7 @@ MonoBehaviour:
   accelerationFactor: 30
   turnFactor: 3.5
   maxSpeed: 20
+  frictionConstant: 0.45
 --- !u!114 &7959419908803489106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10322,7 +10325,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.009806335, y: -0.015410006}
+  m_Offset: {x: 0.6, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10332,7 +10335,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.53770125, y: 1.0308199}
+  m_Size: {x: 2.3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &7220872511139074841
 MonoBehaviour:
@@ -10347,6 +10350,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPositionText: {fileID: 3826332541445131983}
+--- !u!114 &6989987307149779290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558157357540894650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5c6a6003fbcb34ca1d5e1602eb5370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiMode: 1
+  maxSpeed: 16
+  isAvoidingCars: 1
+  skillLevel: 1
+--- !u!114 &1571375353614577629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558157357540894650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5bdf0c23c100740897e45f9faa5155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebugActiveForCar: 0
 --- !u!1 &6497259975606672492
 GameObject:
   m_ObjectHideFlags: 0
@@ -10373,8 +10405,8 @@ Transform:
   m_GameObject: {fileID: 6497259975606672492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalPosition: {x: 0.6902, y: 0.8607, z: 0}
+  m_LocalScale: {x: 2.0845764, y: 1.5677098, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7056308778022567571}
