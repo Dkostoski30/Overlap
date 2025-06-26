@@ -24,7 +24,12 @@ public class CarLapCounter : MonoBehaviour
     float hideUIDelayTime;
 
 
+    //Events
     public event Action<CarLapCounter> OnPassCheckpoint;
+
+    void Start()
+    {
+    }
 
     public void SetCarPosition(int position)
     {
@@ -38,6 +43,11 @@ public class CarLapCounter : MonoBehaviour
     public float GetTimeAtLastCheckPoint()
     {
         return timeAtLastPassedCheckPoint;
+    }
+
+    public bool IsRaceCompleted()
+    {
+        return isRaceCompleted;
     }
 
     IEnumerator ShowPositionCO(float delayUntilHidePosition)
@@ -65,17 +75,20 @@ public class CarLapCounter : MonoBehaviour
     {
         if (collider2D.CompareTag("CheckPoint"))
         {
+            //Once a car has completed the race we don't need to check any checkpoints or laps. 
             if (isRaceCompleted)
                 return;
 
             CheckPoint checkPoint = collider2D.GetComponent<CheckPoint>();
 
+            //Make sure that the car is passing the checkpoints in the correct order. The correct checkpoint must have exactly 1 higher value than the passed checkpoint
             if (passedCheckPointNumber + 1 == checkPoint.checkPointNumber)
             {
                 passedCheckPointNumber = checkPoint.checkPointNumber;
 
                 numberOfPassedCheckpoints++;
 
+                //Store the time at the checkpoint
                 timeAtLastPassedCheckPoint = Time.time;
 
                 if (checkPoint.isFinishLine)
@@ -88,11 +101,24 @@ public class CarLapCounter : MonoBehaviour
                 }
 
 
+                //Invoke the passed checkpoint event
                 OnPassCheckpoint?.Invoke(this);
 
+                //Now show the cars position as it has been calculated but only do it when a car passes through the finish line
                 if (isRaceCompleted)
+                {
                     StartCoroutine(ShowPositionCO(100));
-                else StartCoroutine(ShowPositionCO(1.5f));
+
+                    if (CompareTag("Player"))
+                    {
+                        GameManager.instance.OnRaceCompleted();
+
+                        GetComponent<CarInputHandler>().enabled = false;
+                        GetComponent<CarAIHandler>().enabled = true;
+                        GetComponent<AStarLite>().enabled = true;
+                    }
+                }
+                else if (checkPoint.isFinishLine) StartCoroutine(ShowPositionCO(1.5f));
             }
         }
     }

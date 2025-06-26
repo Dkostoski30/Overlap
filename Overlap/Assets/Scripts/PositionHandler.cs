@@ -5,7 +5,6 @@ using System.Linq;
 
 public class PositionHandler : MonoBehaviour
 {
-    //Other components
     LeaderboardUIHandler leaderboardUIHandler;
 
     public List<CarLapCounter> carLapCounters = new List<CarLapCounter>();
